@@ -20,7 +20,7 @@ public class Main {
             opc = ler.nextInt();
             switch (opc){
                 case 1:
-                    pessoa = cadastrar();
+                    cadastrar(pessoa);
                     pessoas.add(pessoa);
                     break;
 
@@ -31,14 +31,14 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Opção invalida1");
+                    System.out.println("Opção invalida");
             }
         }
 
 
     }
 
-    public static Pessoa cadastrar(){
+    public static void cadastrar(Pessoa pessoa){
 
         Scanner ler = new Scanner(System.in);
         String nome;
@@ -63,8 +63,9 @@ public class Main {
             opc = ler.nextInt();
         }
 
-
-        return new Pessoa(nome,idade,enderecos);
+        pessoa.setNome(nome);
+        pessoa.setIdade(idade);
+        pessoa.setEnderecos(enderecos);
     }
 
     public static void exibir(List<Pessoa> pessoas)
