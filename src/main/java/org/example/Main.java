@@ -8,7 +8,6 @@ public class Main {
     public static void main(String[] args) {
 
         List<Pessoa> pessoas = new ArrayList<>();
-        Pessoa pessoa = new Pessoa();
 
         Scanner ler = new Scanner(System.in);
         int opc = 1;
@@ -20,7 +19,7 @@ public class Main {
             opc = ler.nextInt();
             switch (opc){
                 case 1:
-                    cadastrar(pessoa);
+                    Pessoa pessoa = cadastrar();
                     pessoas.add(pessoa);
                     break;
 
@@ -38,7 +37,7 @@ public class Main {
 
     }
 
-    public static void cadastrar(Pessoa pessoa){
+    public static Pessoa cadastrar(){
 
         Scanner ler = new Scanner(System.in);
         String nome;
@@ -63,9 +62,7 @@ public class Main {
             opc = ler.nextInt();
         }
 
-        pessoa.setNome(nome);
-        pessoa.setIdade(idade);
-        pessoa.setEnderecos(enderecos);
+        return new Pessoa(nome, idade, enderecos);
     }
 
     public static void exibir(List<Pessoa> pessoas)
