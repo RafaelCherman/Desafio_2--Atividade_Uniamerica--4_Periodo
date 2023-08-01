@@ -5,17 +5,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
+    static Scanner ler = new Scanner(System.in);
     public static void main(String[] args) {
 
         List<Pessoa> pessoas = new ArrayList<>();
 
-        Scanner ler = new Scanner(System.in);
+
         int opc = 1;
-        while(opc != 3)
+        while(opc != 4)
         {
             System.out.println("1 - Cadastrar uma pessoa");
             System.out.println("2 - Buscar uma pessoa");
-            System.out.println("3 - Sair");
+            System.out.println("3 - Listar pessoas");
+            System.out.println("4 - Sair");
             opc = ler.nextInt();
             switch (opc){
                 case 1:
@@ -27,6 +30,10 @@ public class Main {
                     exibir(pessoas);
 
                 case 3:
+                    listar(pessoas);
+                    break;
+
+                case 4:
                     break;
 
                 default:
@@ -39,7 +46,6 @@ public class Main {
 
     public static Pessoa cadastrar(){
 
-        Scanner ler = new Scanner(System.in);
         String nome;
         String rua;
         int idade;
@@ -65,11 +71,23 @@ public class Main {
         return new Pessoa(nome, idade, enderecos);
     }
 
+    public static void listar(List<Pessoa> pessoas)
+    {
+        for(Pessoa i : pessoas)
+        {
+
+            System.out.println("Nome: " + i.getNome() + " - Idade: " + i.getIdade());
+            for (Endereco j : i.getEnderecos()) {
+                System.out.println("Numero: " + j.getNumero() + " - Rua: " + j.getRua());
+            }
+
+        }
+    }
+
     public static void exibir(List<Pessoa> pessoas)
     {
         String nome;
         boolean achou = false;
-        Scanner ler = new Scanner(System.in);
         System.out.println("Digite um nome");
         nome = ler.next();
 
